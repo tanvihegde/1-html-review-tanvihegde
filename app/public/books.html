@@ -39,7 +39,7 @@
         Books 
       </header>
     
-    <table class="table table-bordered table-striped table-hover">
+    <table id="taskTable" class="table table-bordered table-striped table-hover">
       <thead>
       <tr>
         <th>Title</th>	
@@ -132,6 +132,10 @@
       
 
     </table>
+    <script src="js/tablesort.min.js"></script>
+    <script>
+      new Tablesort(document.getElementById('taskTable'));
+    </script>
 
   </body>
 </html>
