@@ -7,7 +7,7 @@ const app1 = {
     
     computed: {
         prettyBirthday() {
-            return dayjs(this.person.dob.date)
+            return dayjs(this.userinfo.dob.date)
             .format('D MMM YYYY');
         }
     },
