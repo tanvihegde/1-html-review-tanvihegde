@@ -12,6 +12,9 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     
     <title>About Me!</title>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,21 +41,20 @@
     </header>
     
     <main>
-      <div id='userapp'>
+      <div id= "userapp">
         <form method = "get" v-on:submit.prevent="fetchUser">
-          <p> Name: {{userName}} </p>
-          <p> Email: <a href="mailto:dicketydock@gmail.com"> {{userEmail}} </a> </p>
+          <p> Name: {{userinfo.name.first}} {{userinfo.name.last}} </p>
+          <p> Email: <a href="mailto:dicketydock@gmail.com"> {{userinfo.email}} </a> </p>
           <p> Country: {{userCountry}} </p>
           <p> Birthdate: {{userBirthdate}} </p>
           <p> Age: {{userAge}} </p>
           <a v-bind:href="userPicLarge">
             <img v-bind:src="userPicThumb">
           </a>
-          <div> 
-              <p><button type="submit"> Refresh </button></p>
+      <div> 
+          <p><button type="submit"> Refresh </button></p>
         </form>
-      </div>
-
+      
    
       <div class="text-center">
         <h3>><a href="mailto:dicketydock@gmail.com" target="_blank" rel="noopener noreferrer" id="a">Email </a></h3>
