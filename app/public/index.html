@@ -45,9 +45,11 @@
         <form method = "get" v-on:submit.prevent="fetchUser">
           <p> Name: {{userinfo.name.first}} {{userinfo.name.last}} </p>
           <p> Email: <a href="mailto:dicketydock@gmail.com"> {{userinfo.email}} </a> </p>
-          <p> Country: {{userCountry}} </p>
-          <p> Birthdate: {{userBirthdate}} </p>
-          <p> Age: {{userAge}} </p>
+          <p> Country: {{userinfo.location.country}} </p>
+          <p> Birthdate: {{userinfo.dob.date[0]}} {{userinfo.dob.date[1]}} {{userinfo.dob.date[2]}} {{userinfo.dob.date[3]}}</p>
+          <p> Age: {{userinfo.dob.age}} </p>
+          {{userinfo.picture.large}}
+          {{userinfo.picture.thumbnail}}
           <a v-bind:href="userPicLarge">
             <img v-bind:src="userPicThumb">
           </a>
@@ -55,10 +57,6 @@
           <p><button type="submit"> Refresh </button></p>
         </form>
       
-   
-      <div class="text-center">
-        <h3>><a href="mailto:dicketydock@gmail.com" target="_blank" rel="noopener noreferrer" id="a">Email </a></h3>
-      </p></div>
      
       <img src = "img/profile.jpg" alt = "thrill"  class="img" >
 
