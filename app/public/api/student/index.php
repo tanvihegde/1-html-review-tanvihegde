@@ -26,6 +26,3 @@ $json = json_encode($patients, JSON_PRETTY_PRINT);
 // Step 4: Output
 header('Content-Type: application/json');
 echo $json;
-© 2021 GitHub, Inc.
-Terms
-Privacy
