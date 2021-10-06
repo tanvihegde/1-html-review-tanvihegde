@@ -1,30 +1,56 @@
 <?php
 
-$foo= "To be";
-$num =2;
-$bar = "or not to be";
+$num = 2;
 
-echo $foo ." ". $bar; #to print something out \
-echo "\n";
-echo $num * $num *$num;
+$foo = $num ." be";
+$bar = "or not " .$num. " be";
 
-$array = [1,2,3,4,5];
+echo $foo . ' ' . $bar . "\n";
 
-$array2 = [
-    "first" => "Tanvi",
-    "second" => "class",
+echo $num * $num * $num;
+
+$arr = [
+    "first" => "Tom",
+    "second" => "Bipin",
     "best" => "DS"
 ];
 
+$arr2 = [1,1,2,3,5,8];
+
+
 if (true) {
-    echo "TRUE \n";
-} else {
-    echo "FALSE \n";
+    echo "\nTRUE\n";
 }
 
-// $arr as json 
+while (true) {
+    //This way it doesn't actually do anything
+    break;
+}
 
-echo json_encode ($arr);
+# This is also a comment
 
-# PHP and JS: CamelCase
-#Constants: CAPITAL 
+/* This is a 
+multi-line 
+comment */
+
+// echo "<ul>";
+// foreach($arr as $key=>$val) {
+//     echo "<li>".$key ." is ".$val."</li>";
+// }
+// echo "</ul>";
+
+function printAndEncode( $val ) {
+    echo json_encode(
+        $val, 
+        JSON_PRETTY_PRINT|JSON_THROW_ON_ERROR
+    );
+}
+
+// ====
+// Naming conventions
+
+// JS & PHP : camelCase
+
+// PascalCase
+// snake_case
+// kebab-case
