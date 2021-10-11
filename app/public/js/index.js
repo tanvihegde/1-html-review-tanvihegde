@@ -3,7 +3,8 @@ const SomeApp = {
       return {
         students: [],
         selectedStudent: null,
-        offers: []
+        offers: [],
+        books:[]
       }
     },
     computed: {},
@@ -24,12 +25,23 @@ const SomeApp = {
             this.offers = [];
             this.fetchOfferData(this.selectedStudent);
         },
-        fetchStudentData() {
-            fetch('/api/student/')
+        // fetchStudentData() {
+        //     fetch('/api/student/')
+        //     .then( response => response.json() )
+        //     .then( (responseJson) => {
+        //         console.log(responseJson);
+        //         this.students = responseJson;
+        //     })
+        //     .catch( (err) => {
+        //         console.error(err);
+        //     })
+        // },
+        fetchBookData() {
+            fetch('/api/books/')
             .then( response => response.json() )
             .then( (responseJson) => {
                 console.log(responseJson);
-                this.students = responseJson;
+                this.books = responseJson;
             })
             .catch( (err) => {
                 console.error(err);
@@ -52,7 +64,8 @@ const SomeApp = {
         }
     },
     created() {
-        this.fetchStudentData();
+        //this.fetchStudentData();
+        this.fetchBookData();
     }
   
   }
