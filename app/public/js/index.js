@@ -57,13 +57,14 @@ const SomeApp = {
                 // reset the form
                 this.bookForm = {};
             });
+
         }
-  },
+        },
 
     created() {
         this.fetchBookData();
     }
   
-  }
+}
 
   Vue.createApp(SomeApp).mount('#offerApp');
