@@ -42,7 +42,7 @@
       </header>
     
       <div id="offerApp" class="container">
-        <div class="row align-items-start">
+        <!-- <div class="row align-items-start"> -->
           <!-- <div class="col col-4"> -->
             <!-- <p>Profile information for {{ person.name.first }}</p> -->
             <!-- <div v-for="s in books">
@@ -51,9 +51,7 @@
             </div>
           </div> -->
 
-          <!-- <div class="col col-8" v-if="selectedStudent">
-            <h1>Offers for {{ selectedStudent.name }}</h1> -->
-
+      <!-- <div class="col col-8" v-if="selectedStudent"> -->
 
     <table id="taskTable" class="table table-bordered table-striped table-hover">
       <thead>
@@ -66,8 +64,8 @@
         <th>MSRP</th>
         </tr>
       </thead>
-
       <tbody>
+
         <tr v-for="book in books">
             <td>{{ book.title }}</td>
             <td>{{ book.author }}</td>
@@ -76,58 +74,51 @@
             <td>{{ book.pagecount }}</td>
             <td>{{ book.msrp }}</td>
         </tr>
-    </tbody>
+      </tbody>
+    </table>
 
-        
-<!-- 
-        <tr>
-        <td> The Girl on the Train	</td> 
-        <td>Edgar Allan Poe </td>
-        <td>	2005 </td>
-        <td> Frog Books </td>
-        <td>	699 </td>
-        <td>	$300 </td>
-        </tr> -->
+          <div class="row">
+            <div>
+                 <form>
+                  <form v-on:submit.prevent="postNewBook">
+                    <div class="mb-3">
 
-         <!-- <tr>
-        <td> Little Women	</td> 
-        <td> James Patterson	 </td>
-        <td>	2009 </td>
-        <td> Impulse </td>
-        <td>	19 </td>
-        <td>	$20 </td>
-        </tr>
-
-        <tr>
-            <td> The Outsiders	</td> 
-            <td> 	Stuart Woods	 </td>
-            <td>	2020 </td>
-            <td> Blaze Vox Books </td>
-            <td>	399 </td>
-            <td>	$230 </td>
-            </tr>
-
-            <tr>
-                <td> Untamed	</td> 
-                <td> 	John Sandford	 </td>
-                <td>	2011 </td>
-                <td> Blaze Vox Books </td>
-                <td>	145 </td>
-                <td>	$90 </td>
-                </tr> -->
-
-                <form>
-                  <!-- <form v-on:submit.prevent="postNewOffer">
-                    <div class="mb-3"> -->
-
-                    <label for="lastname">Title </label><input type="text" name="lastname" id="lastname"> <br>
-                  <label for="lastname">Author </label><input type="text" name="lastname" id="lastname"> <br>
-                  <label for="lastname">Year </label><input type="text" name="lastname" id="lastname"> <br>
-                  <label for="lastname">Publisher </label><input type="text" name="lastname" id="lastname"> <br>
-                  <label for="lastname">Pages </label><input type="text" name="lastname" id="lastname"> <br>
-                  <label for="lastname">MSRP </label><input type="text" name="lastname" id="lastname"> <br>
-
+                  <label for="title" class="form-label">Title</label>
+                <input type="text" v-model="bookForm.title"
+                 class="form-control" id="title">
+              </div>
+              <div class="mb-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" v-model="bookForm.author" class="form-control" id="author">
+              </div>
+              <div class="mb-3">
+                <label for="yearpublished" class="form-label">Year</label>
+                <input type="text" v-model="bookForm.yearpublished" class="form-control" id="yearpublished">
+              </div>
+              <div class="mb-3">
+                <label for="publisher" class="form-label">Publisher</label>
+                <input type="text" v-model="bookForm.publisher" class="form-control" id="publisher">
+              </div>
+              <div class="mb-3">
+                <label for="pagecount" class="form-label">Pages</label>
+                <input type="text" v-model="bookForm.pagecount" class="form-control" id="pagecount">
+              </div>
+              <div class="mb-3">
+                <label for="msrp" class="form-label">MSRP</label>
+                <input type="text" v-model="bookForm.msrp" class="form-control" id="msrp">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+
+              </div>
+              </div>
+      </div>
+      
+
+                <!-- <button type="button" class="btn btn-outline-secondary" 
+                 v-if="selectedOffer"
+                 v-on:click="handleResetEdit">Cancel Edit</button> -->
+
       </tbody>
       <!-----Table sort Plug in from  http://tristen.ca/tablesort/demo/ ---> 
     </table>

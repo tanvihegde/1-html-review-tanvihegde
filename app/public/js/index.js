@@ -4,7 +4,8 @@ const SomeApp = {
         students: [],
         selectedStudent: null,
         offers: [],
-        books:[]
+        books:[],
+        bookForm:{}
       }
     },
     computed: {},
@@ -25,7 +26,6 @@ const SomeApp = {
             this.offers = [];
             this.fetchOfferData(this.selectedStudent);
         },
-       
         fetchBookData() {
             fetch('/api/books/')
             .then( response => response.json() )
@@ -37,51 +37,33 @@ const SomeApp = {
                 console.error(err);
             })
         },
-        fetchOfferData(s) {
-            console.log("Fetching offer data for ", s);
-            fetch('/api/offer/?student=' + s.id)
+        postNewBook(evt) {
+        
+            console.log("Posting!", this.bookForm);
+
+            fetch('api/books/', {
+                method:'POST',
+                body: JSON.stringify(this.bookForm),
+                headers: {
+                "Content-Type": "application/json; charset=utf-8"
+                }
+            })
             .then( response => response.json() )
-            .then( (responseJson) => {
-                console.log(responseJson);
-                this.offers = responseJson;
-            })
-            .catch( (err) => {
-                console.error(err);
-            })
-            .catch( (error) => {
-                console.error(error);
+            .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.books = json;
+                
+                // reset the form
+                this.bookForm = {};
             });
         }
-    },
-
-//     postNewOffer(evt) {
-//         this.offerForm.studentId = this.selectedStudent.id;        
-        
-//         console.log("Posting!", this.offerForm);
-
-//         fetch('api/offer/create.php', {
-//             method:'POST',
-//             body: JSON.stringify(this.offerForm),
-//             headers: {
-//               "Content-Type": "application/json; charset=utf-8"
-//             }
-//           })
-//           .then( response => response.json() )
-//           .then( json => {
-//             console.log("Returned from post:", json);
-//             // TODO: test a result was returned!
-//             this.offers = json;
-            
-//             // reset the form
-//             this.offerForm = {};
-//           });
-//       }
-//   },
+  },
 
     created() {
         this.fetchBookData();
     }
   
   }
-  
+
   Vue.createApp(SomeApp).mount('#offerApp');
