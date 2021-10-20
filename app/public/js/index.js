@@ -18,14 +18,6 @@ const SomeApp = {
             const d = new Intl.NumberFormat("en-US").format(n);
             return "$ " + d;
         },
-        selectStudent(s) {
-            if (s == this.selectedStudent) {
-                return;
-            }
-            this.selectedStudent = s;
-            this.offers = [];
-            this.fetchOfferData(this.selectedStudent);
-        },
         fetchBookData() {
             fetch('/api/books/')
             .then( response => response.json() )
