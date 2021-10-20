@@ -33,7 +33,7 @@ const SomeApp = {
         
             console.log("Posting!", this.bookForm);
 
-            fetch('api/books/', {
+            fetch('api/books/create.php', {
                 method:'POST',
                 body: JSON.stringify(this.bookForm),
                 headers: {
