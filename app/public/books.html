@@ -63,13 +63,22 @@
             <td>{{ book.publisher }}</td>
             <td>{{ book.pagecount }}</td>
             <td>{{ book.msrp }}</td>
+
+            <td>
+              <button type="button" v-on:click="handleEditBook(books)" class="btn btn-outline-secondary btn-sm">Edit</button>
+              <button type="button" v-on:click="postDeleteBook(books)" class="btn btn-outline-secondary btn-sm">Delete</button>
+
+            </td>
         </tr>
       </tbody>
     </table>
 
           <div class="row">
             <div>
-                  <form v-on:submit.prevent="postNewBook">
+
+              <h3>{{ selectedBook === null ? "Add " : "Edit " }} Book</h3>
+              
+                  <form v-on:submit.prevent="postBook">
                     <div class="mb-3">
 
                   <label for="title" class="form-label">Title</label>
@@ -97,16 +106,16 @@
                 <input type="text" v-model="bookForm.msrp" class="form-control" id="msrp">
               </div>
     
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">{{ selectedBook === null ? "Add " : "Edit " }} Book</button>
+              <button type="button" class="btn btn-outline-secondary" 
+                 v-if="selectedBook"
+                 v-on:click="handleResetEdit">Cancel Edit</button>
                 </form>
 
               </div>
               </div>
       </div>
 
-                <!-- <button type="button" class="btn btn-outline-secondary" 
-                 v-if="selectedOffer"
-                 v-on:click="handleResetEdit">Cancel Edit</button> -->
 
       </tbody>
       <!-----Table sort Plug in from  http://tristen.ca/tablesort/demo/ ---> 
