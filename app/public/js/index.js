@@ -69,16 +69,40 @@ const SomeApp = {
             this.bookForm = {};
         },
         
-    postDeleteBook(o) {  
-        // if ( !confirm("Are you sure you want to delete the book from ") ) {
-        //     return;
-        // }  
+    // postDeleteBook(o) {  
+    //     // if ( !confirm("Are you sure you want to delete the book from ") ) {
+    //     //     return;
+    //     // }  
         
-        //console.log("Delete!", o);
+    //     //console.log("Delete!", o);
 
-        fetch('api/books/delete.php',{
+    //     fetch('api/books/delete.php',{
+    //         method:'POST',
+    //         body: JSON.stringify(this.o),
+    //         headers: {
+    //           "Content-Type": "application/json; charset=utf-8"
+    //         }
+    //       })
+    //       .then( response => response.json() )
+    //       .then( json => {
+    //         console.log("Returned from post:", json);
+    //         // TODO: test a result was returned!
+    //         this.books = json;
+            
+    //         // reset the form
+    //         this.handleResetEdit();
+    //       });
+    //   },
+
+    postDeleteBook(b) {
+        if (!confirm("Are you sure you want to delete "+b.title+"?")) {
+          return;
+        }
+        console.log("Delete!", b);
+
+        fetch('api/books/delete.php', {
             method:'POST',
-            body: JSON.stringify(this.o),
+            body: JSON.stringify(b),
             headers: {
               "Content-Type": "application/json; charset=utf-8"
             }
@@ -87,10 +111,11 @@ const SomeApp = {
           .then( json => {
             console.log("Returned from post:", json);
             // TODO: test a result was returned!
-            this.books = json;
-            
+            this.offers = json;
+
             // reset the form
-            this.handleResetEdit();
+            this.resetBookForm();
+            this.fetchBookData();
           });
       },
         postNewBook(evt) {
