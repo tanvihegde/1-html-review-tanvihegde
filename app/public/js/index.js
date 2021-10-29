@@ -68,16 +68,17 @@ const SomeApp = {
             this.selectedBook = null;
             this.bookForm = {};
         },
-    postDeleteBook(o) {  
-        if ( !confirm("Are you sure you want to delete the book from ") ) {
-            return;
-        }  
         
-        console.log("Delete!", o);
+    postDeleteBook(o) {  
+        // if ( !confirm("Are you sure you want to delete the book from ") ) {
+        //     return;
+        // }  
+        
+        //console.log("Delete!", o);
 
-        fetch('api/books/delete.php', {
+        fetch('api/books/delete.php',{
             method:'POST',
-            body: JSON.stringify(o),
+            body: JSON.stringify(this.o),
             headers: {
               "Content-Type": "application/json; charset=utf-8"
             }
